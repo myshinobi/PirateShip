@@ -112,8 +112,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\NERVEGear\packages\LargeAddressAware.1.0.3\build\LargeAddressAware.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\NERVEGear\packages\LargeAddressAware.1.0.3\build\LargeAddressAware.targets'))" />
-    <Error Condition="!Exists('..\LeadLaboratory\Lead Laboratory\packages\LargeAddressAware.1.0.5\build\LargeAddressAware.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\LeadLaboratory\Lead Laboratory\packages\LargeAddressAware.1.0.5\build\LargeAddressAware.targets'))" />
+    <Error Condition="!Exists('packages\LargeAddressAware.1.0.5\build\LargeAddressAware.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\LargeAddressAware.1.0.5\build\LargeAddressAware.targets'))" />
   </Target>
   <Import Project="..\LeadLaboratory\Lead Laboratory\packages\LargeAddressAware.1.0.5\build\LargeAddressAware.targets" Condition="Exists('..\LeadLaboratory\Lead Laboratory\packages\LargeAddressAware.1.0.5\build\LargeAddressAware.targets')" />
+  <Import Project="packages\LargeAddressAware.1.0.5\build\LargeAddressAware.targets" Condition="Exists('packages\LargeAddressAware.1.0.5\build\LargeAddressAware.targets')" />
 </Project>
