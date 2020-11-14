@@ -344,6 +344,14 @@ namespace PirateShip
 
         public static string[] validSchemes = new string[] {"http","https" };
 
+        public bool CheckURIForInvalidRedirection(Uri goal, Uri result)
+        {
+            string goalURL = goal.AbsoluteUri.Replace(goal.Scheme, "").Replace(@"://www.","://");
+            string resultURL = result.AbsoluteUri.Replace(result.Scheme, "").Replace(@"://www.","://");
+
+            return goalURL != resultURL;
+        }
+         
         private Booty PlunderWebsiteTask()
         {
             statusCode = null;
@@ -402,10 +410,10 @@ namespace PirateShip
                             break;
                     }
 
-                    if (client.ResponseUri != url)
+                    if (CheckURIForInvalidRedirection(url, client.ResponseUri))
                     {
                         wasRedirected = true;
-                        throw new Exception("Url was redirected and result cannot be trusted.");
+                        //throw new Exception("Url was redirected and result cannot be trusted.");
                     }
 
                     statusCode = HttpStatusCode.OK;
